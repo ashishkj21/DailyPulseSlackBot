@@ -7,7 +7,7 @@ from langchain.sql_database import SQLDatabase
 from langchain_community.agent_toolkits import SQLDatabaseToolkit, create_sql_agent  
 from langchain_openai import AzureChatOpenAI  
 from langchain.callbacks.manager import CallbackManagerForToolRun, AsyncCallbackManagerForToolRun   
-from common.fetch_info import fetch_github_and_linear_events
+from common.fetch_info import fetch_github_and_linear_events, fetch_last_sql_update
   
 try:  
     from .prompts import MSSQL_AGENT_PREFIX  
@@ -112,5 +112,23 @@ class Github_Linear_UpdateTool(BaseTool):
         events = fetch_github_and_linear_events(user_email, username, api_key, api_url, yesterday)  
         print(f"Fetched events: {events}")  
         return events  
+  
+class GetUpdateFromMemoryTool(BaseTool):
+    name = "get_update_from_memory"
+    description = "Fetches the last SQL update for the given username from the environment variable"
+
+    def _run(self) -> str:
+        """Use the tool."""
+        print("Running GetUpdateFromMemoryTool")
+        username = os.getenv("GITHUB_USERNAME")
+        
+        if not username:
+            print("Error: GITHUB_USERNAME environment variable is not set")
+            raise ValueError("GITHUB_USERNAME environment variable is not set")
+        
+        print(f"Fetching last SQL update for user: {username}")
+        result = fetch_last_sql_update(username)
+        print(f"Fetched result: {result}")
+        return result  
   
   
