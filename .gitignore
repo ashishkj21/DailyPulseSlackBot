@@ -1,0 +1,35 @@
+# Ignore virtual environment directories
+venv/
+env/
+
+# Ignore Python compiled files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Ignore Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+
+# Ignore specific files and directories from your project
+# Based on the provided code snippets, you might want to ignore:
+venv/Lib/site-packages/
+venv/share/jupyter/lab/schemas/
+
+# Ignore system files
+.DS_Store
+Thumbs.db
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+*.bak
+*.swp
+
+# Ignore environment variables file
+credentials.env
+
+# Ignore Jupyter Notebook copies
+Backend-Copy1.ipynb
+venv/
+.ipynb_checkpoints/
+Backend-Copy1.ipynb
