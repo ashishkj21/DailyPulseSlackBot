@@ -1,7 +1,6 @@
 import requests
 import os
 import json
-# from datetime import datetime
 import dotenv
 import psycopg2 # Ensure this import is at the top of your file
 import datetime  # Ensure this import is at the top of your file
